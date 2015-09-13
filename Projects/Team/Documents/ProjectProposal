@@ -39,31 +39,14 @@ The main Goal of the application is to make the illeterate people educated to so
 4 Deliverables
 
 Milestones
-Due Date
-Release
-Deliverable?
-Prototype of game factory
-15/10/2015
-Pre-Beta
-Yes
-First Version of game factory
-30/10/2015
-Beta
-Yes
-Second Version/Final of game factory
-30/11/2015
-Final
-Yes
+Milestone Schedule:
 
-
-
-
-
-
-
-
-
-
+Milestone                                 Due Date     Release  Deliverable?   
+Draft requirements/Documentation          15/09/2015   R1        No
+Reading and Understanding of Source Files 30/09/2015   R1        No
+Prototype of game factory                 15/10/2015   Pre-Beta  Yes
+First Version of game factory             30/10/2015   Beta     Yes
+Second Version/Final of game factory      30/11/2015   Final     Yes
 
 
 5 Risk Management
@@ -77,35 +60,7 @@ Main risk is to modify the existing libraries of the source code and modify them
 We can take advice from the people who have worked on designing the games,
 game libraries so that modifications will be made with less inconsistency and errors.
  
-6 Scheduling and Estimates
- 
 
-Milestone
-Due Date
-Release
-Deliverable?
-Draft requirements/Documentation
-15/09/2015
-R1
-No
-Reading and Understanding of Source Files  
-30/09/2015
-R1
-No
-Prototype of game factory
-15/10/2015
-Pre-Beta
-Yes
-First Version of game factory
-30/10/2015
-Beta
-Yes
-Second Version/Final of game factory
-30/11/2015
-Final
-Yes
-
-
-7 Technical Process
+6. Technical Process
 
 Till now documentation part has been started and we are still deciding tools and technologies.
