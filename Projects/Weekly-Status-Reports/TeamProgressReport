@@ -14,6 +14,6 @@ In this week we have changed our project idea. we decided to do a game factory f
    Frame works for designing games are cocos2d,Unity,Libgdx
    Programming languages to be used are c++,Java and python.
 Next Week's goals: We have to find how exactly this will work and how to build it etc.
-      
      14 sep 2015:
        We had a tutorial last saturday, In the tutorial we have told our idea to TA,He told this is a complex to design.
+Initially we want to design a game engine for generating a code for different games but now we want to develop 4 games and we want to provide an interface for them.
