@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline;
+}
+</style>
+</head>
+<body style="background-color:lightgrey">
+<center><h1>Spell Check Game</h1>
+<h3> Spelling Practice On Different Languages </h3></center>
+<center>
+<ul>
+<li><input type="button" value="తెలుగు" onClick="telugu();"/></li>
+<li><input type="button" value="हिन्दी" onClick="hindhi();"/>
+</li>
+<li><input type="button" value="தமிழ்" onClick="tamil();"/>
+</li>
+<li><input type="button" value="മലയാളം" onClick="malayalam();"/></li>
+</ul>
+<br>
+<h1 id="demo"></h1>
+<h2 id="counter"></h2>
+<h2 id="display_words"></h2>
+
+<h2 id="headding"></h2>
+
+
+<p id="telu"></p>
+<p id="telugu_word"</p>
+<p id="hind"></p>
+<p id="tami"></p>
+<p id="mala"></p>
+<br>
+
+</center>
+<script>
+var wrong_count=0,correct_count=0,i=0,gcount=0;
+var telugu_words = '{"tel_lan":[' +
+'{"firstName":"ssdfsdf","cp":-1,"lastName":"ప్రపచం","cn":1 },' +
+'{"firstName":"ప్రపంచం","cp":1,"lastName":"sdgsd","cn":-1 },' +
+'{"firstName":"పsdfsd","cp":-1,"lastName":"ప్రపచం","cn":1 },' +
+'{"firstName":"ప్రపంచం","cp":1,"lastName":"ప్రచం","cn":-1 },' +
+'{"firstName":"ప్రపంచం","cp":1,"lastName":"ప్sdgsdf","cn":-1 },' +
+'{"firstName":"పfdsfs","cp":-1,"lastName":"ప్రపచం","cn":1 },' +
+'{"firstName":"ప్రపంచం","cp":1,"lastName":"పsdgsdf","cn":-1 },' +
+'{"firstName":"పfddsf","cp":-1,"lastName":"ప్రపచం","cn":1 },' +
+'{"firstName":"ప్రపంచం","cp":1,"lastName":"పsdfsdfం","cn":-1 },' +
+'{"firstName":"పsdfs","cp":-1,"lastName":"ప్రపచం","cn":1 }]}';
+
+var hindhi_words = '{"lan":[' +
+'{"firstName":"मछल","cp":-1,"lastName":"मछली","cn":1 },' +
+'{"firstName":"मच्छर","cp":1,"lastName":"मचछर","cn":-1 },' +
+'{"firstName":"कत्ता","cp":-1,"lastName":"कुत्ता","cn":1 },' +
+'{"firstName":"केला","cp":1,"lastName":"केल","cn":-1 },' +
+'{"firstName":"प्याज","cp":1,"lastName":"पयाज","cn":-1 },' +
+'{"firstName":"गम","cp":-1,"lastName":"गरम","cn":1 },' +
+'{"firstName":"प्यास लगना","cp":1,"lastName":"प्यस लगना","cn":-1 },' +
+'{"firstName":"आन","cp":-1,"lastName":"आना","cn":1 },' +
+'{"firstName":"लडका","cp":1,"lastName":"लडक","cn":-1 },' +
+'{"firstName":"स्वतन्तर","cp":-1,"lastName":"स्वतन्त्र","cn":1 }]}';
+
+
+var malayalam_words = '{"lan":[' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"Peter","lastName":"Jones" }]}';
+
+var tamil_words = '{"lan":[' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"ప్రపంచం","lastName":"ప్రపచం" },' +
+'{"firstName":"Peter","lastName":"Jones" }]}';
+var text = '{"lan":[' +
+'{"firstName":"సరైన పదం ఎంచుకోండి?","lastName":"" },' +
+'{"firstName":"सही शब्द चुना है ?","lastName":"" },' +
+'{"firstName":"சரியான வார்த்தை தேர்வு?","lastName":"" },' +
+'{"firstName":"ശരിയായ വാക്ക് തിരഞ്ഞെടുത്തു ?","lastName":""}]}';
+
+function telugu()
+	{
+		gcount=0;
+		obj = JSON.parse(text);
+		document.getElementById("demo").innerHTML =obj.lan[0].firstName + "<br>" + obj.lan[0].lastName;
+        
+i=0;               
+myLoop();
+return ;
+	}
+	//var i = 1;                     //  set your counter to 1
+function myLoop () {           //  create a loop function
+   setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+      core_tel();         //  your code here
+      i++;                     //  increment the counter
+      if (i < 10) {            //  if the counter < 10, call the loop function
+         myLoop();             //  ..  again which will trigger another 
+      }                        //  ..  setTimeout()
+   }, 4000)
+}                     //  start the loop
+function core_tel()
+{
+	//var li=0;
+     // for (li=0;li<10;li++)// {
+    	document.getElementById("counter").innerHTML ="CountDown :"+ gcount+1;
+           obj1 = JSON.parse(telugu_words);
+		document.getElementById("display_words").innerHTML ="Word1: "+ obj1.tel_lan[gcount].firstName + "<br>"+"Word2: "+obj1.tel_lan[gcount].lastName; 
+		document.getElementById("headding").innerHTML ="Choose Which word is correct"+"<br>"; 
+
+     //}
+gcount++;
+
+}
+	function hindhi()
+	{
+
+		 gcount=0;
+		obj = JSON.parse(text);
+		document.getElementById("demo").innerHTML =obj.lan[1].firstName + "<br>" + obj.lan[1].lastName;
+
+		obj = JSON.parse(te);
+		document.getElementById("tel").innerHTML =obj.lan[1].firstName + "<br>" + obj.lan[1].lastName;
+
+ 	    
+		
+	}
+	function core_hin()
+{
+	 var temp;
+	  temp=gcount;
+	//var li=0;
+     // for (li=0;li<10;li++)// {
+    	document.getElementById("counter").innerHTML ="CountDown :"+ temp;
+           obj1 = JSON.parse(hindhi_words);
+		document.getElementById("display_words").innerHTML ="Word1: "+ obj1.tel_lan[gcount].firstName + "<br>"+"Word2: "+obj1.tel_lan[gcount].lastName; 
+		document.getElementById("headding").innerHTML ="Choose Which word is correct"+"<br>"; 
+
+     //}
+gcount++;
+
+}
+	function tamil()
+	{
+		gcount=0;
+		obj = JSON.parse(text);
+		document.getElementById("demo").innerHTML =obj.lan[2].firstName + "<br>" + obj.lan[2].lastName;
+ 	    		
+	}
+	function malayalam()
+	{
+		gcount=0;
+		obj = JSON.parse(text);
+		document.getElementById("demo").innerHTML =obj.lan[3].firstName + "<br>" + obj.lan[3].lastName;
+	
+	}
+	function main()
+	{
+		//telugu();
+		//hindhi();
+		//tamil();
+		malayalam();
+		
+	}
+	function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == null || x == "") {
+    	
+        alert("Name must be filled out");
+        return false;
+    }
+}
+//obj = JSON.parse(text);
+//document.getElementById("demo").innerHTML =
+//obj.lan[1].firstName + "<br>" + obj.lan[1].lastName;
+//main();
+</script>
+
+</body>
+</html>
