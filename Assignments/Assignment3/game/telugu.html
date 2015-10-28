@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline;
+}
+</style>
+</head>
+<body style="background-color:lightgrey">
+<center><h1>Spell Check Game</h1>
+<h3> Spelling Practice On Different Languages </h3>
+<h4 id="date" align="right" ></h4>
+</center>
+<center>
+<input type="button" value="Play" onClick="telugu();"/>
+<h3> Total Score</h3>
+<h3 id="board"></h3>
+<h1 id="demo"></h1>
+<h2 id="counter"></h2>
+<h2 id="display_words"></h2>
+<h2 id="headding"></h2>
+</center>
+<center>
+<button id="but1" type="button" onclick="fun(2);
+                                               if(G==1)
+                                            {core_tel();}
+                                          if(G==2)
+                                            { 
+                                            core_hin();}
+                                          if(G==3)
+                                             {
+                                             core_tam();
+                                             }
+                                          if(G==4)
+                                             {
+                                             core_mal();
+                                             }">word1</button>
+<!--<button id="but1_1" type="button" onclick="fun(x);">Word1</button>
+<button id="but2_2" type="button" onclick="fun(x);">Word2</button>-->
+<button id="but2" type="button" onclick="fun(1);if(G==1)
+                                            {core_tel();}
+                                          if(G==2)
+                                            { 
+                                            core_hin();}
+                                          if(G==3)
+                                             {
+                                             core_tam();
+                                             }
+                                          if(G==4)
+                                             {
+                                             core_mal();
+                                             }">word2</button>
+</center>
+<script>
+var var_button,G;
+var total_score=0,i=0,j=0,k=0,l=0,gcount=0,gcount1=0,gcoount2=0,gcount3=0;
+var telugu_words = '{"tel_lan":[' +
+'{"firstName":"నమస్కరము","cp":1,"lastName":"నమస్కారము","cn":-1 },' +
+'{"firstName":"మాట్లాడకడి","cp":-1,"lastName":"మాట్లాడకండి","cn":1 },' +
+'{"firstName":"ఎందుకు","cp":1,"lastName":" ఎందుు","cn":-1 },' +
+'{"firstName":"సవత్సరం","cp":-1,"lastName":"సంవత్సరం","cn":1 },' +
+'{"firstName":"చేస్తున్నాము","cp":1,"lastName":"చేస్తున్నము","cn":-1 },' +
+'{"firstName":"ఏంటి","cp":1,"lastName":"ఏటి","cn":-1 },' +
+'{"firstName":"చూస్తున్నను","cp":-1,"lastName":"చూస్తున్నాను","cn":1 },' +
+'{"firstName":"ఎలా ఉన్నారు?","cp":1,"lastName":"ఎలా ఉన్నరు?","cn":-1 },' +
+'{"firstName":"ధన్యవదములు","cp":-1,"lastName":"ధన్యవాదములు","cn":1 },' +
+'{"firstName":"స్నేహం","cp":1,"lastName":"సనేహం","cn":-1 },' +
+'{"firstName":"చెప్పడి","cp":-1,"lastName":"చెప్పండి","cn":1 }]}';
+var text = '{"lan":[' +
+'{"firstName":"సరైన పదం ఎంచుకోండి?","lastName":"" },' +
+'{"firstName":"सही शब्द चुना है ?","lastName":"" },' +
+'{"firstName":"சரியான வார்த்தை தேர்வு?","lastName":"" },' +
+'{"firstName":"ശരിയായ വാക്ക് തിരഞ്ഞെടുത്തു ?","lastName":""}]}';
+document.getElementById("date").innerHTML = Date();
+
+function telugu()
+	{	
+    G=1;
+    total_score=0;
+    document.getElementById("board").innerHTML = total_score;
+		gcount1=0;
+		obj = JSON.parse(text);
+		document.getElementById("demo").innerHTML =obj.lan[0].firstName + "<br>" + obj.lan[0].lastName;       
+      core_tel();
+        return 0;
+
+	}
+
+function core_tel()
+{
+	var temp;
+	temp=gcount1;
+  //myLoop1();
+    	//document.getElementById("counter").innerHTML ="CountDown :"+ temp;
+            obj1 = JSON.parse(telugu_words);
+		document.getElementById("display_words").innerHTML ="1. "+ obj1.tel_lan[gcount1].firstName + "<br>"+"2. "+obj1.tel_lan[gcount1].lastName; 
+    document.getElementById("but1").innerHTML ="Word1";
+    document.getElementById("but2").innerHTML="Word2";
+     if(gcount1>=10)
+        alert("Game over!"+"Your Total Score is "+" " +total_score);
+gcount1++;
+}
+ function  fun(i) {
+    if(i==1){
+
+    total_score=total_score+obj1.tel_lan[gcount1].cp;
+     document.getElementById("board").innerHTML =total_score;}
+    if(i==2){
+    total_score=total_score+obj1.tel_lan[gcount1].cn; 
+       document.getElementById("board").innerHTML =total_score;}   
+
+ }
+</script>
+
+</body>
+</html>
